@@ -15,18 +15,15 @@ export LIBOVERLAY_SCROLLBAR=0
 
 # export LD_DEBUG=all
 if test -f "${sd}"/blackbox; then
-    edir="${sd}"
+    executable="${sd}"/blackbox
+    echo Running blackbox executable from "${sd}"
 else 
-    edir="${pd}"
+    executable="${pd}"/blackbox
+    echo Running blackbox executable from "${pd}"
 fi
-tput init
-bold=`tput setaf 2`
-plain=`tput sgr0`
-echo Running blackbox executable from ${bold}"${edir}"${plain} against BlackBox primary ${bold}"${pd}"${plain}
-
 
 env \
 	BB_PRIMARY_DIR="${pd}" BB_SECONDARY_DIR="${sd}" \
-	"${edir}"/blackbox
+	$executable
 #	"${pd}"/blackbox
 
